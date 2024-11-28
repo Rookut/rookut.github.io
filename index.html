@@ -5,9 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Official website for Air Combat Sandbox, the ultimate aerial warfare experience.">
     <title>Air Combat Sandbox</title>
-    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -59,21 +58,67 @@
             color: #292929;
         }
 
-        .title-container {
-            display: none; /* Hide the previous title container */
+        .hamburger-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
         }
 
-        .title-container h1 {
-            margin: 0;
-            font-size: 2.5rem;
-            color: #ffffff;
-            text-transform: uppercase;
+        .hamburger-menu .bar {
+            width: 25px;
+            height: 3px;
+            background-color: #ffffff;
+            margin: 3px 0;
+            transition: 0.4s;
+        }
+
+        @media screen and (max-width: 768px) {
+            .top-bar nav {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background: #101014;
+                padding: 1rem 0;
+            }
+
+            .top-bar nav.active {
+                display: flex;
+            }
+
+            .top-bar nav a {
+                margin: 10px 0;
+                text-align: center;
+            }
+
+            .hamburger-menu {
+                display: flex;
+            }
+
+            .hamburger-menu.active .bar:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+
+            .hamburger-menu.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger-menu.active .bar:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+        }
+
+        .title-container {
+            display: none;
         }
 
         .hero {
             text-align: center;
             padding: 5rem 1rem;
             background: url('background.jpg') no-repeat center center / cover;
+            margin-top: 60px;
         }
 
         .hero h2 {
@@ -144,6 +189,36 @@
             color: #001931;
             text-decoration: none;
         }
+
+        #about {
+            position: relative;
+            overflow: hidden;
+            margin-top: 60px;
+        }
+
+        #about video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .swiper-container {
+            width: 80%;
+            max-width: 800px;
+            margin: auto;
+            z-index: 1;
+            position: relative;
+        }
+
+        .swiper-slide img {
+            width: 100%;
+            border-radius: 10px;
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -152,6 +227,11 @@
             <div class="logo">
                 <img src="https://raw.githubusercontent.com/Rookut/rookut.github.io/refs/heads/main/Cool-Text-469184805263216.png" alt="Air Combat Sandbox Logo">
             </div>
+            <div class="hamburger-menu">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
             <nav>
                 <a href="#about">About</a>
                 <a href="#features">Features</a>
@@ -159,19 +239,14 @@
                 <a href="#contact">Contact</a>
             </nav>
         </div>
-        <div class="title-container">
-            <!-- This is now hidden, but kept for potential future use -->
-        </div>
     </header>
 
     <section id="about" style="position: relative; overflow: hidden;">
-        <!-- Video Background -->
         <video autoplay loop muted playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;">
             <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
 
-        <!-- Content Overlay -->
         <div style="position: relative; padding: 5rem 1rem; color: #ffffff; text-align: center;">
             <h2>About Air Combat Sandbox</h2>
             <p>
@@ -192,6 +267,7 @@
             <img src="https://raw.githubusercontent.com/Rookut/rookut.github.io/refs/heads/main/Steam_2016_logo_black.svg.png" alt="Play on Steam" style="width: 150px; height: auto;">
         </a>
     </section>
+
     <section id="features">
         <h3>Game Features</h3>
         <div class="feature-grid">
@@ -231,7 +307,6 @@
     <section id="media">
         <h3>Game Media</h3>
         <p>Check out screenshots and videos of the action-packed gameplay.</p>
-        <!-- Swiper -->
         <div class="swiper-container">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
@@ -246,20 +321,40 @@
                 <div class="swiper-slide">
                     <img src="https://raw.githubusercontent.com/Rookut/rookut.github.io/refs/heads/main/Screenshot%202024-11-27%20165523.png" alt="Screenshot 4">
                 </div>
-                
             </div>
-            <!-- Add Pagination -->
             <div class="swiper-pagination"></div>
-            <!-- Add Navigation -->
             <div class="swiper-button-prev"></div>
             <div class="swiper-button-next"></div>
         </div>
     </section>
-    
-    <!-- Swiper JS -->
+
+    <section id="contact">
+        <h3>Contact Us</h3>
+        <p>Have questions or feedback? Reach out to our team.</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Air Combat Sandbox. All rights reserved.</p>
+        <p>
+            Follow us on 
+            <a href="#">X</a>, 
+            <a href="#">YouTube</a>, and 
+            <a href="#">Facebook</a>.
+        </p>
+    </footer>
+
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    
     <script>
+        // Hamburger Menu Toggle
+        const hamburgerMenu = document.querySelector('.hamburger-menu');
+        const nav = document.querySelector('.top-bar nav');
+
+        hamburgerMenu.addEventListener('click', () => {
+            hamburgerMenu.classList.toggle('active');
+            nav.classList.toggle('active');
+        });
+
+        // Swiper Initialization
         const swiper = new Swiper('.swiper-container', {
             loop: true,
             pagination: {
@@ -272,56 +367,5 @@
             },
         });
     </script>
-    
-    <!-- Swiper CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-    
-    <style>
-#about {
-    position: relative;
-    overflow: hidden;
-}
-
-#about video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -1; /* Ensure video stays behind the content */
-}
-
-.swiper-container {
-    width: 80%;
-    max-width: 800px;
-    margin: auto;
-    z-index: 1; /* Ensure Swiper controls are above the video */
-    position: relative; /* Make sure the swiper container stays in the flow of the page */
-}
-
-.swiper-slide img {
-    width: 100%;
-    border-radius: 10px;
-    display: block;
-}
-    </style>
-    
-
-    <section id="contact">
-        <h3>Contact Us</h3>
-        <p>Have questions or feedback? Reach out to our team.</p>
-        <!-- Add a contact form or details -->
-    </section>
-
-    <footer>
-        <p>&copy; 2024 Air Combat Sandbox. All rights reserved.</p>
-        <p>
-            Follow us on 
-            <a href="#">X</a>, 
-            <a href="#">YouTube</a>, and 
-            <a href="#">Facebook</a>.
-        </p>
-    </footer>
 </body>
 </html>
